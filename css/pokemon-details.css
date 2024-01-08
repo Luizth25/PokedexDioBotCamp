@@ -1,0 +1,47 @@
+.close-modal-button {
+  padding: .25rem .5rem;
+  margin: .25rem 0;
+  font-size: .625rem;
+  color: #fff;
+  background-color: #6c79db;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.separator {
+  display: inline-block;
+  background-color: #fff;
+  width: 100%;
+  height: 2px;
+}
+
+#pokemonModal {
+  border: 2px solid black;
+  border-radius: 1rem;
+  filter: brightness(1.1);
+}
+
+.base-status-list {
+  list-style: none;
+}
+
+.modal-pokemon-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.type-details {
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 4px;
+  width: 80px;
+  color: #fff;
+}
+
+.pokemon-id {
+  color: #fff;
+}

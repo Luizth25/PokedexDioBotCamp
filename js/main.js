@@ -1,26 +1,30 @@
-const loadMoreButton = document.getElementById("loadMore");
+const loadMoreButton = document.getElementById("load-more");
 const pokemonList = document.getElementById("pokemon-list");
-let offset = 0;
+
 const limit = 5;
+const maxRecords = 151;
 
+let offset = 0;
+
+// Função para converter Pokémon em elementos HTML
 const convertPokemonToHtml = (pokemon) => {
-  console.log(pokemon);
-
-  return `<li class='pokemon ${pokemon.type}'>
-  <span class="number">##${pokemon.id}</span>
-  <span class="name">${pokemon.name}</span>
-  <div class="detail">
-    <ol class="types">
-   ${pokemon.types
-     .map((type) => `<li class="type ${type}">${type}</li>`)
-     .join(" ")}
-    </ol>
-    <img
-      src=${pokemon.image}
-      alt=${pokemon.name}
-    />
-  </div>
-</li>`;
+  return `<li class='pokemon ${pokemon.type}' onclick="openModal(${
+    pokemon.id
+  })">
+    <span class="number">##${pokemon.id}</span>
+    <span class="name">${pokemon.name}</span>
+    <div class="detail">
+      <ol class="types">
+        ${pokemon.types
+          .map((type) => `<li class="type ${type}">${type}</li>`)
+          .join(" ")}
+      </ol>
+      <img
+        src=${pokemon.image}
+        alt=${pokemon.name}
+      />
+    </div>
+  </li>`;
 };
 
 const loadMorePokemonItems = (offset, limit) => {
@@ -33,7 +37,23 @@ const loadMorePokemonItems = (offset, limit) => {
 
 loadMorePokemonItems(offset, limit);
 
+function loadPokemonItens(offset, limit) {
+  pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+    const newHtml = pokemons.map(convertPokemonToHtml).join("");
+    pokemonList.innerHTML += newHtml;
+  });
+}
+
 loadMoreButton.addEventListener("click", () => {
   offset += limit;
-  loadMorePokemonItems(offset, limit);
+  const qtdRecordsWithNexPage = offset + limit;
+
+  if (qtdRecordsWithNexPage >= maxRecords) {
+    const newLimit = maxRecords - offset;
+    loadPokemonItens(offset, newLimit);
+
+    loadMoreButton.parentElement.removeChild(loadMoreButton);
+  } else {
+    loadPokemonItens(offset, limit);
+  }
 });

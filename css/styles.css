@@ -84,6 +84,7 @@
   margin: .5rem;
   padding: 1rem;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 .pokemon .number {
@@ -93,7 +94,7 @@
   font-size: .625rem;
 }
 
-.pokemon .name {
+.name {
   text-transform: capitalize;
   color: #fff;
   margin-bottom: .25rem;
