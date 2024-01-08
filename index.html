@@ -24,10 +24,28 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/pokemon-details.css" />
   </head>
   <body>
-    <h1>Ola mundo!!</h1>
+    <section class="content">
+      <h1>Pokedex</h1>
 
+      <ol id="pokemon-list" class="pokemons-list">
+        <!-- Pokemon here -->
+      </ol>
+      <div class="pagination">
+        <button id="load-more" type="button">Load More</button>
+      </div>
+      <dialog id="pokemonModal" ${pokemon.type}>
+        <button class="close-modal-button" onclick="closeModal()">Close</button>
+        <div class="modal-pokemon-details" id="modalPokemonDetails"></div>
+      </dialog>
+    </section>
+
+    <script src="./js/pokemon-model.js"></script>
+    <script src="./js/poke-details-modal.js"></script>
+    <script src="./js/poke-api.js"></script>
     <script src="./js/main.js"></script>
   </body>
 </html>
